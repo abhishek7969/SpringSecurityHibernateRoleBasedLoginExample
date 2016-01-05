@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.websystique.springsecurity</groupId>
-  <artifactId>SpringSecurityHibernateRoleBasedLoginExample</artifactId>
-  <version>1.0.0</version>
-  <packaging>war</packaging>
+	<groupId>com.websystique.springsecurity</groupId>
+	<artifactId>SpringSecurityHibernateRoleBasedLoginExample</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
 
-  <name>SpringSecurityHibernateRoleBasedLoginExample</name>
-  
-  	<properties>
+	<name>SpringSecurityHibernateRoleBasedLoginExample</name>
+
+	<properties>
 		<springframework.version>4.1.6.RELEASE</springframework.version>
 		<springsecurity.version>4.0.1.RELEASE</springsecurity.version>
 		<hibernate.version>4.3.6.Final</hibernate.version>
@@ -17,7 +17,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -44,7 +44,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
-		
+
 
 		<!-- Spring Security -->
 		<dependency>
@@ -87,6 +87,13 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>catalina</artifactId>
+			<version>6.0.37</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

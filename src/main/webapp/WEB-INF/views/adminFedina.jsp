@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	
-		<link href="<c:url value='/static/css/dashboard.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/ui.all.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/dashboard(1).css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/modalbox.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/autosuggest-menu.css' />"  rel="stylesheet"></link>
-	
-	<title>Admin page</title>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0044)http://demo.projectfedena.org/user/dashboard -->
+<html dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+       <link href="<c:url value='/static/Fedena_files/dashboard.css' />"  rel="stylesheet"></link>
+        <link href="<c:url value='/static/Fedena_files/ui.all.css' />"  rel="stylesheet"></link>
+        <link href="<c:url value='/static/Fedena_files/dashboard(1).css' />"  rel="stylesheet"></link>
+        <link href="<c:url value='/static/Fedena_files/modalbox.css' />"  rel="stylesheet"></link>
+        <link href="<c:url value='/static/Fedena_files/autosuggest-menu.css' />"  rel="stylesheet"></link>
+    
+    
+      
+  </head>
 
   <body>
     <div id="header_bg">
@@ -29,7 +29,7 @@
             <a href="http://demo.projectfedena.org/user/profile/admin" class="profile-link">Fedena</a>
             </div>
             <div id="logout-link">
-            <a href="<c:url value="/logout" />">Log out</a>
+            <a href="http://demo.projectfedena.org/user/logout">Log out</a>
             </div>
           </div>
         </div>
@@ -287,6 +287,4 @@
 <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul><div class="nicetitle" style="width: 300px; left: 602px; top: 480px;"><p class="titletext">Configure the basic school settings</p></div>
 
 
-</body>
-
-</html>
+</body></html>
