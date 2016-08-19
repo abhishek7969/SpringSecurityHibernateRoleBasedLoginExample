@@ -1,292 +1,502 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	
-		<link href="<c:url value='/static/css/dashboard.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/ui.all.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/dashboard(1).css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/modalbox.css' />"  rel="stylesheet"></link>
-        <link href="<c:url value='/static/css/autosuggest-menu.css' />"  rel="stylesheet"></link>
-	
-	<title>Admin page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Admin page</title>
+
+<style>
+/*
+Credits:
+Code snippet by @maridlcrmn (Follow me on Twitter)
+Images by Nike.com (http://www.nike.com/us/en_us/)
+Logo by Sneaker-mission.com (http://www.sneaker-mission.com/)
+*/
+.navbar-brand {
+	width: 70px;
+	height: 50px;
+	background:
+		url('http://www.sneaker-mission.com/uploads/3/1/2/7/31279819/5617441.png')
+		no-repeat center center;
+	background-size: 50px;
+}
+
+.nav-tabs {
+	display: inline-block;
+	border-bottom: none;
+	padding-top: 15px;
+	font-weight: bold;
+}
+
+.nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li>a:focus, .nav-tabs>li.active>a,
+	.nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+	border: none;
+	border-radius: 0;
+}
+
+.nav-list {
+	border-bottom: 1px solid #eee;
+}
+
+.nav-list>li {
+	padding: 20px 15px 15px;
+	border-left: 1px solid #eee;
+}
+
+.nav-list>li:last-child {
+	border-right: 1px solid #eee;
+}
+
+.nav-list>li>a:hover {
+	text-decoration: none;
+}
+
+.nav-list>li>a>span {
+	display: block;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.mega-dropdown {
+	position: static !important;
+}
+
+.mega-dropdown-menu {
+	padding: 20px 15px 15px;
+	text-align: center;
+	width: 100%;
+}
+</style>
+
+<style>
+/*
+ * Globals
+ */
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #555;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	margin-top: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	color: #333;
+}
+
+/*
+ * Override Bootstrap's default container.
+ */
+@media ( min-width : 1200px) {
+	.container {
+		width: 970px;
+	}
+}
+
+/*
+ * Masthead for nav
+ */
+.blog-masthead {
+	background-color: #428bca;
+	-webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+	box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+}
+
+/* Nav links */
+.blog-nav-item {
+	position: relative;
+	display: inline-block;
+	padding: 10px;
+	font-weight: 500;
+	color: #cdddeb;
+}
+
+.blog-nav-item:hover, .blog-nav-item:focus {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+	color: #fff;
+}
+
+.blog-nav .active:after {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	margin-left: -5px;
+	vertical-align: middle;
+	content: " ";
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid;
+	border-left: 5px solid transparent;
+}
+
+/*
+ * Blog name and description
+ */
+.blog-header {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.blog-title {
+	margin-top: 30px;
+	margin-bottom: 0;
+	font-size: 60px;
+	font-weight: normal;
+}
+
+.blog-description {
+	font-size: 20px;
+	color: #999;
+}
+
+/*
+ * Main column and sidebar layout
+ */
+.blog-main {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+	padding: 15px;
+	margin: 0 -15px 15px;
+}
+
+.sidebar-module-inset {
+	padding: 15px;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+}
+
+.sidebar-module-inset p:last-child, .sidebar-module-inset ul:last-child,
+	.sidebar-module-inset ol:last-child {
+	margin-bottom: 0;
+}
+
+/* Pagination */
+.pager {
+	margin-bottom: 60px;
+	text-align: left;
+}
+
+.pager>li>a {
+	width: 140px;
+	padding: 10px 20px;
+	text-align: center;
+	border-radius: 30px;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+	margin-bottom: 60px;
+}
+
+.blog-post-title {
+	margin-bottom: 5px;
+	font-size: 40px;
+}
+
+.blog-post-meta {
+	margin-bottom: 20px;
+	color: #999;
+}
+
+/*
+ * Footer
+ */
+.blog-footer {
+	padding: 40px 0;
+	color: #999;
+	text-align: center;
+	background-color: #f9f9f9;
+	border-top: 1px solid #e5e5e5;
+}
+
+.blog-footer p:last-child {
+	margin-bottom: 0;
+}
+</style>
+
+<!-- Bootstrap core CSS -->
+<link href="<c:url value='/static/css/bootstrap.min.css' />"
+	rel="stylesheet"></link>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap core CSS -->
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+<!-- Custom styles for this template -->
+<link href="<c:url value='/static/css/sticky-footer-navbar.css' />"
+	rel="stylesheet"></link>
+
 </head>
 
-  <body>
-    <div id="header_bg">
-      <div id="header">
-        <div id="outer-header-link">
-          <div id="institution-name">
-            Your School Name
-          </div>
-          <div id="header_link">
-            <div id="messages-link">
-              <a href="http://demo.projectfedena.org/reminder">Messages</a>
-				<span>(0)</span>
-            </div>
-            <div id="profile-link">
-            <a href="http://demo.projectfedena.org/user/profile/admin" class="profile-link">Fedena</a>
-            </div>
-            <div id="logout-link">
-            <a href="<c:url value="/logout" />">Log out</a>
-            </div>
-          </div>
-        </div>
-        <div id="outer-main-menu">
-          
+<body>
 
-<!-- <ul id="main-menu">
-  <li class="a"><a href="./Fedena_files/Fedena.htm">Dashboard</a></li>
-  
-    <li class="a"><a href="http://demo.projectfedena.org/student">Students</a></li>
-  
-  
-    <li class="a"><a href="http://demo.projectfedena.org/student_attendance">Attendance ▼</a>
-      <ul class="level-1">
-        <li><a href="http://demo.projectfedena.org/attendances">Attendance register</a></li>
-        <li><a href="http://demo.projectfedena.org/attendance_reports">Attendance Report</a></li>
-      </ul>
-    </li>
-  
-  
-    <li class="a"><a href="http://demo.projectfedena.org/configuration">Settings ▼</a>
-      <ul class="level-1">
-        
-          <li><a href="http://demo.projectfedena.org/courses">Manage Course/Batch</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/student/categories">Manage Student Category</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/subjects">Manage Subject</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/configuration/settings">General Settings</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/student/add_additional_details">Add Admission Additional Detail</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/sms">SMS module</a></li>
-        
-      </ul>
-    </li>
-  
-  <!--
-  <li><a href="/news">News</a></li> -->
-  
- <!--   <li class="a"><a href="http://demo.projectfedena.org/timetable">Timetable <span class="down-arrow">▼</span></a>
-      <ul class="level-1">
-        
-          <li><a href="http://demo.projectfedena.org/timetable/new_timetable">Create Timetable</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/timetable/edit_master">Edit Timetable</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/class_timings">Set class timings</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/weekday">Create Weekdays</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/timetable/view">View Timetables</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/timetable/teachers_timetable">Teacher Timetable</a></li>
-        
-        <li><a href="http://demo.projectfedena.org/timetable/timetable">Institutional Timetable</a></li>
-        
-        
-          <li><a href="http://demo.projectfedena.org/timetable/work_allotment">Work Allotment</a></li>
-        
-      </ul>
-    </li>
-  
-  
-    
-  
-  <li class="a"><a href="http://demo.projectfedena.org/user/dashboard#">More ▼</a>
-    <ul class="level-1" id="more-parent">
-      <li><a href="http://demo.projectfedena.org/calendar">Calendar</a></li>
-      
-        <li><a href="http://demo.projectfedena.org/exam">Examination <span class="right-arrow">▶</span></a>
-          <ul class="level-2" id="exam-parent">
-            
-            
-            
-              
-                <li><a href="http://demo.projectfedena.org/exam/settings">Settings</a> </li>
-              
-              
-                <li><a href="http://demo.projectfedena.org/exam/create_exam">Exam Management</a>  </li>
-              
-              
-                <li><a href="http://demo.projectfedena.org/exam/generate_reports">Generate Reports</a> </li>
-              
-              <li><a href="http://demo.projectfedena.org/exam/report_center">Report Center</a></li>
-            
-            
-          </ul>
-        </li>
-      
-      <li><a href="http://demo.projectfedena.org/news">News</a></li>
-      
-        <li><a href="http://demo.projectfedena.org/event">Event Creation</a></li>
-      
-      
-        <li><a href="http://demo.projectfedena.org/employee/hr">Human Resource <span class="right-arrow">▶</span></a>
-          <ul class="level-2">
-            
-              <li><a href="http://demo.projectfedena.org/employee/settings">Setting</a></li>
-            
-            
-              <li><a href="http://demo.projectfedena.org/employee/employee_management">Employee Management</a></li>
-            
-            
-              <li><a href="http://demo.projectfedena.org/employee/employee_attendance">Employee Leave Management</a></li>
-            
-            
-              <li><a href="http://demo.projectfedena.org/employee/payslip">Create Payslip</a></li>
-            
-            
-              <li><a href="http://demo.projectfedena.org/employee/search">Employee Search</a></li>
-            
-            
-              <li><a href="http://demo.projectfedena.org/employee/department_payslip">Employee payslip</a></li>
-            
-            
-          </ul>
-        </li>
-      
-      
-        <li><a href="http://demo.projectfedena.org/finance">Finance <span class="right-arrow">▶</span></a>
-          <ul class="level-2" id="finance_menu">
-            <li><a href="http://demo.projectfedena.org/finance/fees_index">Fees</a> </li>
-            <li><a href="http://demo.projectfedena.org/finance/categories">Category</a> </li>
-            <li><a href="http://demo.projectfedena.org/finance/transactions">Transactions</a> </li>
-            <li><a href="http://demo.projectfedena.org/finance/donation">Donations</a></li>
-            <li><a href="http://demo.projectfedena.org/finance/automatic_transactions">Automatic Transactions</a></li>
-            
-              <li><a href="http://demo.projectfedena.org/finance/payslip_index">Payslip</a></li>
-            
-            <li><a href="http://demo.projectfedena.org/finance/asset_liability">Asset Liability Management</a></li>
-          </ul>
-        </li>
-      
-      
-        <li><a href="http://demo.projectfedena.org/user">User</a></li>
-      
-    </ul>
-  </li>
-</ul> -->
+	<div class="blog-masthead">
+		<div class="container">
+			<nav class="blog-nav">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#myNavbar">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li><a class="blog-nav-item" href="#">About</a></li>
+							<li><a class="blog-nav-item" href="#">Gallery</a></li>
+							<li><a class="blog-nav-item" href="#">Contact</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a class="blog-nav-item" href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-in"></span> Logout--${user}</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
 
-<script type="text/javascript">
-  function load_menu_from_plugins(){
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav">
+						<li class="dropdown mega-dropdown active"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown">Dropdown <span
+								class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu">
+								<div class="container-fluid">
+									<!-- Tab panes -->
 
-  }
-</script>
+									<div class="tab-content">
+										<div class="tab-pane active" id="men">
+											<ul class="nav-list list-inline">
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary1</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary2</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary3</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary3</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary4</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary5</button></a></li>
+											</ul>
+										</div>
+									</div>
 
-        </div>
-        <div id="outer-autosuggest-menu">
-          
+								</div>
+
+							</div></li>
+						<li><a href="#">Link</a></li>
+						<li class="dropdown mega-dropdown active"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown">Dropdown <span
+								class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu">
+								<div class="container-fluid">
+									<!-- Tab panes -->
+
+									<div class="tab-content">
+										<div class="tab-pane active" id="men">
+											<ul class="nav-list list-inline">
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary1</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary2</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary3</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary3</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary4</button></a></li>
+												<li><a href="#"><button class="btn btn-primary"
+															type="button">Primary5</button></a></li>
+											</ul>
+										</div>
+									</div>
+
+								</div>
+
+							</div></li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</div>
+
+	<div class="container">
 
 
 
-<input id="autosuggest_menu_input" name="autosuggest_menu" placeholder="Search Actions, Events and People" type="text" value="" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+		<div>
+			<h2 class="sub-header">Section title</h2>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Header</th>
+							<th>Header</th>
+							<th>Header</th>
+							<th>Header</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1,001</td>
+							<td>Lorem</td>
+							<td>ipsum</td>
+							<td>dolor</td>
+							<td>sit</td>
+						</tr>
+						<tr>
+							<td>1,002</td>
+							<td>amet</td>
+							<td>consectetur</td>
+							<td>adipiscing</td>
+							<td>elit</td>
+						</tr>
+						<tr>
+							<td>1,003</td>
+							<td>Integer</td>
+							<td>nec</td>
+							<td>odio</td>
+							<td>Praesent</td>
+						</tr>
+						<tr>
+							<td>1,003</td>
+							<td>libero</td>
+							<td>Sed</td>
+							<td>cursus</td>
+							<td>ante</td>
+						</tr>
+						<tr>
+							<td>1,004</td>
+							<td>dapibus</td>
+							<td>diam</td>
+							<td>Sed</td>
+							<td>nisi</td>
+						</tr>
+						<tr>
+							<td>1,005</td>
+							<td>Nulla</td>
+							<td>quis</td>
+							<td>sem</td>
+							<td>at</td>
+						</tr>
+						<tr>
+							<td>1,006</td>
+							<td>nibh</td>
+							<td>elementum</td>
+							<td>imperdiet</td>
+							<td>Duis</td>
+						</tr>
+						<tr>
+							<td>1,007</td>
+							<td>sagittis</td>
+							<td>ipsum</td>
+							<td>Praesent</td>
+							<td>mauris</td>
+						</tr>
+						<tr>
+							<td>1,008</td>
+							<td>Fusce</td>
+							<td>nec</td>
+							<td>tellus</td>
+							<td>sed</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
 
 
-        </div>
-      </div>
-    </div>
-
-    <div id="content_wrapper">
-      <div id="content"> 
-
-  
+		</div>
 
 
-<div id="news_bar">
-  
-    <div class="news_box first-news">
-      <h5 class="news-title"><a href="http://demo.projectfedena.org/news/view/24">School 2.3 released </a></h5>
-      <small class="news-time">Posted on August 18 </small>
-      <small class="comments-count"><a href="http://demo.projectfedena.org/news/view/24#comments-heading">0 Comments</a></small>
-    </div>
-  
-</div>
 
 
-<!--  <p class="flash-msg"> Welcome, School Administrator! </p>   -->
+	</div>
+	<!-- /.container -->
 
-<div id="user_options">
-
-  
-    <div class="button-box left-button">
-      <a href="http://demo.projectfedena.org/student/admission1" class="option_buttons" id="admission_button" nicetitle="Enter students admission details into the school records."><div class="button-label"><p>Admission</p></div></a>
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/student" class="option_buttons" id="student_details_button" nicetitle="Search for existing and former students."><div class="button-label"><p>Student Details</p></div></a>
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/user" class="option_buttons" id="manage_users_button" nicetitle="         Manage Users         "><div class="button-label"><p> Manage Users </p></div></a>
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/news" class="option_buttons" id="manage_news_button" nicetitle="View or publish latest school news and announcements"><div class="button-label"><p>Manage News</p></div></a>
-
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/exam" class="option_buttons" id="examinations_button" nicetitle="          Manage Examinations"><div class="button-label"><p>Examinations</p></div></a>
-    </div>
-    <div class="button-box left-button">
-      <a href="http://demo.projectfedena.org/timetable" class="option_buttons" id="timetable_button" nicetitle="  Timetable management module  "><div class="button-label"><p>Timetable</p></div></a>
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/student_attendance" class="option_buttons" id="student_attendance_button" nicetitle="Manage the attendance for the students"><div class="button-label"><p>Attendance</p></div></a>
-    </div>
-    <div class="button-box">
-      <a href="http://demo.projectfedena.org/configuration" class="option_buttons" id="settings_button" nicetitle="Configure the basic school settings"><div class="button-label"><p>Settings</p></div></a>
-    </div>
-
-    
-      <div class="button-box">
-        <a href="http://demo.projectfedena.org/employee/hr" class="option_buttons" id="hr_button" nicetitle="        Human Resource Department"><div class="button-label"><p>Human Resources</p></div></a>
-      </div>
-
-    
-
-    
-      <div class="button-box">
-        <a href="http://demo.projectfedena.org/finance" class="option_buttons" id="finance_button" nicetitle="        Manages Finance module    "><div class="button-label"><p> Finance</p></div></a>
-      </div>
-    
-
-  
-
-  
-
-</div>
-
-<div id="option_description"> </div>
-
-</div>
-
-      <div class="extender"></div>
-    </div>
-
-    <div id="footer">
-      <div id="footer_logo">
-        <div id="powered_by">
-          Powered by <a href="http://www.projectfedena.org/" target="_blank">Fedena</a>
-        </div>
-      </div>
-    </div>
-  
-
-<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul><div class="nicetitle" style="width: 300px; left: 602px; top: 480px;"><p class="titletext">Configure the basic school settings</p></div>
+	<footer class="blog-footer">
+		<p>
+			Blog template built for <a href="http://getbootstrap.com">Bootstrap</a>
+			by <a href="https://twitter.com/mdo">@mdo</a>.
+		</p>
+		<p>
+			<a href="#">Back to top</a>
+		</p>
+	</footer>
 
 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+	</script>
+	<script src="../../dist/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$(".dropdown").hover(function() {
+				$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+				$(this).toggleClass('open');
+			}, function() {
+				$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+				$(this).toggleClass('open');
+			});
+		});
+	</script>
 </body>
-
 </html>
