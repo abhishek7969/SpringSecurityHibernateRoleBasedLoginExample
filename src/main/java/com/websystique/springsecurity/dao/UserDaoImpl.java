@@ -19,5 +19,11 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		return (User) crit.uniqueResult();
 	}
 
+	@Override
+	protected Class<User> getDomainClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
