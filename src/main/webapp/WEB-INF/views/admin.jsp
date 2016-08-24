@@ -232,8 +232,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	rel="stylesheet"></link>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+
 
 <!-- Bootstrap core CSS -->
 
@@ -486,7 +486,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 				|| document
 						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
 	</script>
-	<script src="../../dist/js/bootstrap.min.js"></script>
+	<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 

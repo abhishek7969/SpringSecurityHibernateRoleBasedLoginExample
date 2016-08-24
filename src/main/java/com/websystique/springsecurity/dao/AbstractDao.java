@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractDao<PK extends Serializable, T> {
 	
 	private final Class<T> persistentClass;
+	protected Class<T> domainClass = getDomainClass();
 	
 	@SuppressWarnings("unchecked")
 	public AbstractDao(){
@@ -41,5 +42,7 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	protected Criteria createEntityCriteria(){
 		return getSession().createCriteria(persistentClass);
 	}
+	
+	protected abstract Class<T> getDomainClass();
 
 }

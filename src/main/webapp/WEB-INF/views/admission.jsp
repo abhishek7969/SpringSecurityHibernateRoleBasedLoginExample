@@ -236,6 +236,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 </style>
 
+<style>
+.tab-content .tab-pane {
+    padding: 0px 0;
+}
+</style>
+
 
 
 <!-- Bootstrap core CSS -->
@@ -243,8 +249,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	rel="stylesheet"></link>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+
 
 <!-- Bootstrap core CSS -->
 
@@ -396,205 +402,38 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	</div>
 
 	<div class="container">
-<!--Form Widzed  -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#billing" aria-controls="billing" role="tab" data-toggle="tab" aria-expanded="true">Student Admission</a>
-    </li>
-    <li>
-      <a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab" aria-expanded="false">Admission Documents</a>
-    </li>
-   <!--  <li>
-      <a href="#review" aria-controls="review" role="tab" data-toggle="tab" aria-expanded="false">Review &amp; Payment</a>
-    </li> -->
-  </ul>
+	<!-- JQUERY DATA TABLE -->
+	<div class="widget widget-table">
+		<div class="widget-header">
+			<h3>
+				<i class="fa fa-table"></i>Student Records
+			</h3>			
+		</div>
 
-<div class="tab-content">
-
-  <div role="tabpanel" class="tab-pane active" id="billing">
-   <!--  <h3 class="">Billing Address</h3>
-    
-    <p>Billing Address Form</p> -->
-    <form class="form-horizontal">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Personal Details</legend>
-
-<div class="row">
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="textinput">First Name</label>  
-	  <div class="col-md-2">
-	  <div class="form-group">
-	  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
-	  </div>
-	  </div>
-
-
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="Mname">Middle Name</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="Mname" name="Mname" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	  </div>
-
-</div>
-
-<div class="row">
-
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="last_name">Last Name</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	  </div>
+	<div id="executionHistory">
 	
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="last_name">Date Of Birth</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	  </div>
-</div>
-
-<div class="row">
-	<!-- Select Basic -->
-	  <label class="col-md-2 control-label" for="selectbasic">Blood Group</label>
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	    <select id="selectbasic" name="selectbasic" class="form-control">
-	      <option value="A-">A-</option>
-	      <option value="A+">A+</option>
-	      <option value="AB-">AB-</option>
-	      <option value="AB+">AB+</option>
-	      <option value="B-">B-</option>
-	      <option value="B+">B+</option>
-	      <option value="O-">O-</option>
-	      <option value="O+">O+</option>
-	    </select>
-	    </div>
-	  </div>
 	
-	 <label class="col-md-2 control-label">Gender</label>
-	 <div class="col-sm-6">
-	     <div class="row">
-	         <div class="col-md-2">
-	         	  <div class="form-group">
-	         	             <label class="radio-inline">
-	                 <input type="radio" id="femaleRadio" value="Female">Female
-	             </label>
-	             </div>
-	         </div>
-	         <div class="col-md-2">
-	         	  <div class="form-group">
-	         
-	             <label class="radio-inline">
-	                 <input type="radio" id="maleRadio" value="Male">Male
-	             </label>
-	             </div>
-	         </div>                         
-	     </div>
-	 </div>
- </div>
- 
-  <!--Contact Details  -->
- <div class="rightfieldset">
-    <div class="form-container">
-        <fieldset>
- <legend>Contact Details</legend>
+		 <div class="widget-content table-responsive"  id="studentRecords">
+			<table class="table table-striped table-hover students-records-datatable" cellpadding="0" cellspacing="0" width="100%" style="clear:both;">
 
-<div class="row">
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="textinput">Address Line 1</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
-	  	  </div>
+				<thead>
+					<tr>
+						<th class="result-table sorting_desc">Id</th>
+						<th class="result-table sorting">Admission</th>
+						<th class="result-table sorting">Name</th>
+						<th class="result-table sorting">Date Of Birth</th>
+						<th class="result-table sorting">Gender</th>
+						<th class="result-table sorting">Blood Group</th>
+						<th ><a title="New row" class="btn btn-primary btn-xs"  onClick = "createNewStudent();"><i class="icon icon-plus"></i> New</a></th>
+					</tr>
+				</thead>
+
+				<tbody align="left" id="resTable">
+				</tbody>
+			</table>
+		</div> 
 	</div>
-	
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="Mname">Address Line 2</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="Mname" name="Mname" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	    
-	  </div>
 </div>
-
-<div class="row">
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="last_name">City</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	  </div>
-	
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="last_name">State</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	 	  	  <input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md">
-	 	  	  </div>
-	  </div>
-</div>
-
-<div class="row">
- 
-	 <!-- Select Basic -->
-	  <label class="col-md-2 control-label" for="selectbasic">Country</label>
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	    <select id="selectbasic" name="selectbasic" class="form-control">
-	      <option value="india">India</option>
-	    </select>
-	    </div>
-	  </div>
-	
-	<!-- Text input-->
-	  <label class="col-md-2 control-label" for="last_name">Pincode</label>  
-	  <div class="col-md-2">
-	  	  <div class="form-group">
-	  	  <input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md">
-	  	  </div>
-	  </div>
-</div>
- 
-
-
-</fieldset></div></div></fieldset>
-</form>
-    
-    
-    
-    
-    
-    <a class="btn btn-primary continue">Continue</a>
-  </div>
-
-  <div role="tabpanel" class="tab-pane" id="shipping">
-    <h3 class="">Shipping Address</h3>
-    <p>Shipping Address Form</p>
-    <a class="btn btn-primary back">Go Back</a>
-    <a class="btn btn-primary continue">Continue</a>
-  </div>
-
-  <div role="tabpanel" class="tab-pane" id="review">
-    <h3 class="">Review &amp; Place Order</h3>
-    <p>Review &amp; Payment Tab</p>
-    <a class="btn btn-primary back">Go Back</a>
-    <a class="btn btn-primary continue">Place Order</a>
-  </div>
-</div>
-
-
-            <div id="push"></div>
-        
-<!--  -->
 
 	</div>
 	<!-- /.container -->
@@ -620,7 +459,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 				|| document
 						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
 	</script>
-	<script src="../../dist/js/bootstrap.min.js"></script>
+	<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
@@ -636,6 +475,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 		});
 	</script>
 	
-	
+
+<script src="<c:url value="/static/js/custom/student.js" />"></script>
+
 </body>
 </html>
